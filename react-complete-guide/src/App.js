@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Person from "./Person/Person";
-import './App.css';
+import classes from './App.css';
 import styled from 'styled-components';
 
 
@@ -74,10 +74,10 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
           <h1>I am Developer</h1>
           {persons}
-          <button className="button" alt={this.state.showData}
+          <button className={classes.button} alt={this.state.showData}
               onClick={this.showData}>Toggle Data</button>
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import './Person.css';
+import classes from './Person.css';
 
 const StyledDiv = styled.div `
    width: 60%;
@@ -20,11 +20,11 @@ class Person extends Component {
             cursor: 'pointer'
         }
         return (
-            <div className="Person">
+            <div className={classes.Person}>
                 <p>I am {this.props.name} age is {this.props.age}</p>
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.blur} value={this.props.name}/>
-                <button className="button"
+                <button className={classes.button}
                     onClick={this.props.click}>Delete</button>
             </div>
         )
