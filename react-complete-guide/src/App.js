@@ -1,38 +1,44 @@
 import React, { Component } from 'react';
 import Person from "./Person/Person";
 import classes from './App.css';
-import styled from 'styled-components';
-
-
-const StyledBtn = styled.button `
-    background-color: ${props => props.alt ? 'red': 'white'};
-    font: inherit;
-    border: 1px solid blue;
-    padding: 8px;
-    cursor: pointer;
-    
-    &:hover {
-        background-color: ${props => props.alt ? 'orange': 'grey'};
-        color: black;
-    }
-`;
+// import styled from 'styled-components';
 
 class App extends Component {
-  state = {
-      persons: [
-          {
-              name: 'Max',
-              age: 21
-          },
-          {
-              name: 'Manu',
-              age: 25
-          }
-      ],
-      showData: false,
+
+  constructor(props) {
+      super(props);
+      console.log('App Js Constructor');
+      this.state = {
+          persons: [
+              {
+                  name: 'Max',
+                  age: 21
+              },
+              {
+                  name: 'Manu',
+                  age: 25
+              }
+          ],
+          showData: false,
+      }
+
   }
 
-  changeName = (name, index) => {
+  static getDerivedStateFromProps(props, state) {
+      console.log('App JS getDerivedStateFromProps', props);
+      return state;
+  }
+
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+      console.log(nextProps, nextState, nextContext);
+      return true;
+  }
+
+    componentDidMount() {
+      console.log('App Js componentDidMount');
+  }
+
+    changeName = (name, index) => {
       const person = {...this.state.persons[index]}
       person.name = name;
       const persons  = [...this.state.persons];
@@ -55,6 +61,7 @@ class App extends Component {
       this.setState({persons});
     }
   render() {
+      console.log('App Js Render');
     let persons = null;
     if(this.state.showData) {
         persons = (
@@ -77,7 +84,7 @@ class App extends Component {
       <div className={classes.App}>
           <h1>I am Developer</h1>
           {persons}
-          <button className={classes.button} alt={this.state.showData}
+          <button className={classes.button}
               onClick={this.showData}>Toggle Data</button>
       </div>
     );
