@@ -14,6 +14,7 @@ class Person extends Component {
     constructor(props) {
         super(props);
         console.log('Person Constructor');
+        this.inputElementRef = React.createRef();
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
@@ -29,6 +30,7 @@ class Person extends Component {
 
     componentDidMount() {
         console.log('Person componentDidMount');
+        this.inputElementRef.current.focus();
     }
 
     componentWillUnmount() {
@@ -48,7 +50,7 @@ class Person extends Component {
             <div className={classes.Person}>
                 <p>I am {this.props.name} age is {this.props.age}</p>
                 <p>{this.props.children}</p>
-                <input type="text" onChange={this.props.blur} value={this.props.name}/>
+                <input ref={this.inputElementRef} type="text" onChange={this.props.blur} value={this.props.name}/>
                 <button className={classes.button}
                     onClick={this.props.click}>Delete</button>
             </div>
