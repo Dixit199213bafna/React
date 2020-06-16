@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './NavigationItems.css';
 import NavigationItem from './NavigationItem/NavigationItem';
-import Aux from '../../../hoc/Aux/Aux';
+import Aux from '../../../hoc/Aux/Aux1';
 const navigationItems = (props) => (
     <ul className={classes.NavigationItems}>
         <NavigationItem link="/burgerBuilder" exact>Burger Builder</NavigationItem>
